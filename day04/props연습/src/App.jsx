@@ -7,7 +7,7 @@ function FunctionApp() {
     <>
       <Count
         counter={counter}
-        hello={"hellow"}
+        hello={"hello"}
         array={[1, 2, 3, "안녕하세요"]}
       />
       <button
@@ -29,8 +29,10 @@ function FunctionApp() {
     </>
   );
 }
-function Count(props) {
-  console.log("props", props);
-  return <div>counter : {props.counter}</div>;
+function Count({ array, counter, hello }) {
+  console.log("array", array);
+  console.log("counter", counter);
+  console.log("hello", hello);
+  return <div>counter : {counter}</div>;
 }
 export default FunctionApp;
