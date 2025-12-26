@@ -1,4 +1,4 @@
-import { Component, useState } from "react";
+import { Component, useEffect, useState } from "react";
 import "./App.css";
 function App() {
   const [showCounter, setShowCounter] = useState(false);
@@ -11,39 +11,24 @@ function App() {
   );
 }
 
-class Counter extends Component {
-  constructor(props) {
-    super(props);
-    this.state = { counter: 1 };
-    console.log("constructor");
-  }
-  componentDidMount() {
-    console.log("DidMount");
-  }
-  componentDidUpdate() {
-    console.log("DidUpdate");
-  }
-  componentWillUnmount() {
-    console.log("WillUnmount");
-  }
+function Counter() {
+  const [counter, setCounter] = useState(1);
+  const [counter2, setCounter2] = useState(100);
 
-  render() {
-    console.log("render");
-    return (
-      <>
-        <div>counter : {this.state.counter}</div>
-        <button
-          onClick={() =>
-            this.setState({
-              counter: 1,
-            })
-          }
-        >
-          +1
-        </button>
-      </>
-    );
-  }
+  useEffect(() => {
+    return () => {
+      console.log("returned function");
+    };
+  });
+  return (
+    <>
+      <div>counter : {counter}</div>
+      <button onClick={() => setCounter(counter + 1)}>+1</button>
+
+      <div>counter2 : {counter2}</div>
+      <button onClick={() => setCounter2(counter2 - 1)}>-1</button>
+    </>
+  );
 }
 
 export default App;
